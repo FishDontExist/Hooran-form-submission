@@ -12,7 +12,12 @@ type Contact = {
 
 export function ContactPage() {
     const fieldStyle = "flex flex-col mb-2";
-    const { register, handleSubmit, formState: { errors } } = useForm<Contact>();
+    const { register, handleSubmit, formState: { errors } } = useForm<Contact>(
+        {
+            mode: "onBlur",
+            reValidateMode: "onBlur"
+        }
+    );
     const navigate = useNavigate();
 
     function onSubmit(contact: Contact) {
